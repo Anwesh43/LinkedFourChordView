@@ -210,4 +210,13 @@ class FourChordView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : FourChordView {
+            val view : FourChordView = FourChordView(activity)
+            activity.setContentView(view)
+            return view 
+        }
+    }
  }
