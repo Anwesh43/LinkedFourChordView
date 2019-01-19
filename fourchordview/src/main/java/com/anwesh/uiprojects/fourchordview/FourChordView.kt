@@ -187,4 +187,26 @@ class FourChordView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : FourChordView) {
+
+        private val animator : Animator = Animator(view)
+        private val fc : FourChord = FourChord(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            fc.draw(canvas, paint)
+            animator.animate {
+                fc.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap(cb : () -> Unit) {
+            fc.startUpdating {
+                animator.start()
+            }
+        }
+    }
  }
