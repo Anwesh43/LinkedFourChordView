@@ -20,6 +20,7 @@ val strokeFactor : Int = 90
 val sizeFactor : Float = 2.8f
 val foreColor : Int = Color.parseColor("#1976D2")
 val backColor : Int = Color.parseColor("#BDBDBD")
+val DELAY : Long = 20
 
 fun Int.inverse() : Float = 1f / this
 fun Float.scaleFactor() : Float = Math.floor(this / scDiv).toFloat()
@@ -99,7 +100,7 @@ class FourChordView(ctx : Context) : View(ctx) {
             if (animated) {
                 cb()
                 try {
-                    Thread.sleep(50)
+                    Thread.sleep(DELAY)
                     view.invalidate()
                 } catch(ex : Exception) {
 
@@ -216,7 +217,7 @@ class FourChordView(ctx : Context) : View(ctx) {
         fun create(activity : Activity) : FourChordView {
             val view : FourChordView = FourChordView(activity)
             activity.setContentView(view)
-            return view 
+            return view
         }
     }
  }
